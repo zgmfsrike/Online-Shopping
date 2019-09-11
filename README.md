@@ -2,7 +2,6 @@
 
 project group 2
 npm i
-npm i nodemon -d
 npm install dotenv
 //create .env to store db config
 
