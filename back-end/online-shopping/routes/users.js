@@ -6,8 +6,6 @@ var mysql = require("../database");
 //   res.send("respond with a resource");
 // });
 
-module.exports = router;
-
 router.get("/users", function(req, res, next) {
   mysql.getConnection((err, mclient) => {
     mclient.query("SELECT * FROM account", function(error, results, fields) {
@@ -16,3 +14,5 @@ router.get("/users", function(req, res, next) {
     });
   });
 });
+
+module.exports = router;

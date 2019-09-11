@@ -7,8 +7,12 @@ var logger = require("morgan");
 // require(`dotenv`).config();
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var productRouter = require("./routes/product");
 var mysql = require("./database");
+var multer = require("multer");
+var bodyParser = require("body-parser");
 var app = express();
+var apiVersion = "/api/v1";
 
 // const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASS } = process.env;
 // var connection = mysql.createConnection({
@@ -24,6 +28,8 @@ mysql.getConnection((err, mclient) => {
     console.log("DB CONNECT !!");
   });
 });
+
+// app.use(multer());
 
 // connection.query("SELECT * FROM account", function(error, results, fields) {
 //   if (error) throw error;
@@ -49,6 +55,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/", usersRouter);
+app.use(apiVersion, productRouter);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Use body-parser as middleware for the app.
+app.use(bodyParser.json());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
