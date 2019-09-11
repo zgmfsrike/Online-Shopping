@@ -57,9 +57,10 @@ app.use("/", indexRouter);
 app.use("/", usersRouter);
 app.use(apiVersion, productRouter);
 
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Use body-parser as middleware for the app.
+// parse application/json
 app.use(bodyParser.json());
 
 // catch 404 and forward to error handler

@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var mysql = require("../database");
 var fs = require("fs");
+// var image = require("../public/uploads/")
 // var multer = require("multer");
 // var upload = multer({ dest: "uploads/" });
 const path = require("path");
@@ -43,6 +44,39 @@ const getAny = multer();
 // });
 
 // Set The Storage Engine
+
+// function to encode file data to base64 encoded string
+function base64_encode(file) {
+  // read binary data
+  var bitmap = fs.readFileSync(file);
+  // convert binary data to base64 encoded string
+  return new Buffer.alloc(bitmap).toString("base64");
+}
+
+// function create_64(b64) {
+//   //   let base64Image = b64.split(";base64,").pop();
+//   //   fs.writeFile(
+//   //     "/public/uploads/",
+//   //     base64Image,
+//   //     { encoding: "base64" },
+//   //     function(err) {
+//   //       console.log("File created");
+//   //     }
+//   //   );
+// }
+
+function decode_base64(base64) {
+  fs.writeFile("dsadasdasdas.jpg", new Buffer.from(base64, "base64"), function(
+    err
+  ) {
+    console.log("Create file success");
+  });
+}
+router.post("/cv64", upload.any(), function(req, res, next) {
+  //   var b64 = base64_encode(req.file.path);
+  let b64 = req.body.b64;
+  decode_base64(b64);
+});
 
 router.post("/products", upload.single("image"), function(req, res, next) {
   let file = req.file;
