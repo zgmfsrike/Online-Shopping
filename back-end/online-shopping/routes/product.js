@@ -55,6 +55,7 @@ function base64_encode(file) {
 }
 //get base64 string then write the file
 function decode_base64(base64) {
+  // let b64 = base64.split(";")[1];
   var filepath = pathUpload + Date.now() + ".jpg";
   // console.log(filepath);
 
