@@ -8,7 +8,7 @@
       <router-link :to="'/product/' + item.id" tag="h5" class="card-title"><a>{{ item.title }}</a></router-link>
       <h6 class="card-subtitle mb-2 remain">{{ item.quantity }} left in stock</h6>
 
-      <p class="card-text truncate">{{ item.description | shortDescription}}</p>
+      <p class="card-text truncate">{{ item.detail | shortDescription}}</p>
 
       <div class="row">
         <p class="col-6 lead">${{ item.price }}</p>

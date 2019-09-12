@@ -1,30 +1,77 @@
-[ {
+[
+  {
   "seller":4,
   "category":1,
-  "name":"macbook Retina 13.3' ME662 (2013)",
-  "detail":"3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM",
-  "price":2399,
-  "image":"https://www.dropbox.com/s/swg9bdr0ejcbtrl/img9.jpg?raw=1",
-  "quantity":10,
+  "name" : "macbook Retina 13.3' ME662 (2013)",
+  "detail" : "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM",
+  "price" : 2399,
+  "image": "../../public/image/electronics/img9.jpg",
+  "quantity" : 10,
   "active":2
-  },
-  {
+  }, {
     "seller":4,
     "category":1,
-    "name":"macbook Retina 13.3' ME662 (2013)",
-    "detail":"Macbook Pro 13.3' Retina MF841LL/A Model 2015 Option Ram Care 12/2016",
-    "price":1199,
-    "image":"https://www.dropbox.com/s/swg9bdr0ejcbtrl/img9.jpg?raw=1",
-    "quantity":10,
+    "name" : "Macbook Pro 13.3' Retina MF841LL/A",
+    "detail" : "Macbook Pro 13.3' Retina MF841LL/A Model 2015 Option Ram Care 12/2016",
+    
+    "price" : 1199,
+    "image" : "https://www.dropbox.com/s/6tqcep7rk29l59e/img2.jpeg?raw=1",
+    "quantity" : 15,
     "active":2
-  },
-{
-  "seller":4,
-  "category":1,
-  "name":"macbook Retina 13.3' ME662 (2013)",
-  "detail":"3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM",
-  "price":2399,
-  "image":"https://www.dropbox.com/s/swg9bdr0ejcbtrl/img9.jpg?raw=1",
-  "quantity":10,
-  "active":2
-}]
+  }, {
+    "seller":4,
+    "category":1,
+    "name" : "Macbook Pro 15.4' Retina MC975LL/A Model 2012",
+    "detail" : "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM",
+    "price" : 1800,
+    "image" : "https://www.dropbox.com/s/78fot6w894stu3n/img3.jpg?raw=1",
+    "quantity" : 1,
+    "active":2
+  }, {
+    "seller":4,
+    "category":1,
+    "name" : "Retina MacBook Pro 13 inch MF841",
+    "detail" : "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache",
+    "price" : 1099,
+    "image" : "https://www.dropbox.com/s/kbuanen8970nin0/img4.jpg?raw=1",
+    "quantity" : 2,
+    "active":2
+  }, {
+    "seller":4,
+    "category":1,
+    "name" : "MacBook Air 13.3' MJVE2",
+    "detail" : "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache",
+    "price" : 656,
+    "quantity" : 5,
+    "image" : "https://www.dropbox.com/s/d45c3pap1h4cu0y/img5.jpg?raw=1",
+    
+    "active":2
+  }, {
+    "seller":4,
+    "category":1,
+    "name" : "Macbook Retina 13.3' ME865LL",
+    "detail" : "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache",
+    "price" : 888,
+    "image" : "https://www.dropbox.com/s/rjj1vtdx79xptu0/img6.jpeg?raw=1",
+    "quantity" : 4,
+    "active":2
+  }, {
+    "seller":4,
+    "category":1,
+    "name" : "Macbook Pro 15.4' Retina ME294LL",
+    "detail" : "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache",
+    "price" : 1999,
+    "image" : "https://www.dropbox.com/s/miym588nx2lscqt/img7.jpg?raw=1",
+    "quantity" : 0,
+    "active":2
+  }, {
+    "seller":4,
+    "category":1,
+    "name" : "Macbook Pro 13.3' Retina MF841LL",
+    "detail" : "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache",
+    "price" : 999.9,
+    "image" : "https://www.dropbox.com/s/wbwqjy22lqjc3jl/img8.jpg?raw=1",
+    "quantity" : 100,
+    "active":2
+  } 
+]
