@@ -8,6 +8,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var productRouter = require("./routes/product");
+var orderRouter = require("./routes/order");
 var db = require("./database");
 var multer = require("multer");
 var bodyParser = require("body-parser");
@@ -56,6 +57,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/", usersRouter);
 app.use(apiVersion, productRouter);
+app.use(apiVersion, orderRouter);
 
 // parse application/x-www-form-urlencoded
 // app.use(bodyParser.urlencoded({ extended: false }));
