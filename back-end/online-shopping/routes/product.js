@@ -10,6 +10,7 @@ var productService = require("../services/product_services");
 var pathUpload = "./public/uploads/";
 // var multer = require("multer");
 const { Validator } = require("node-input-validator");
+var cors = require('cors')
 
 // let storage = multer.diskStorage({
 //   destination: "." + pathUpload,
@@ -55,15 +56,29 @@ function base64_encode(file) {
 }
 //get base64 string then write the file
 function decode_base64(base64) {
-  // let b64 = base64.split(";")[1];
-  var filepath = pathUpload + Date.now() + ".jpg";
+  let b64 = base64.split(";base64")[1];
+  
+  // b64 = b64.replace(/\s/g, '');
+  // var filepath = pathUpload + Date.now() + ".jpg";
   // console.log(filepath);
 
-  fs.writeFile(filepath, new Buffer.from(base64, "base64"), function(err) {
-    filepath = filepath.replace(/\\/g, "/");
+
+  // var base64Data =base64.replace(/^data:image\/jpg;base64,/, "");
+  
+//   fs.writeFile("out.png", base64Data, 'base64', function(err) {
+// console.log(err);
+// });
+  let filepath = "./public/"+Date.now() + ".jpg"
+  var newFile = __dirname +filepath
+
+  fs.writeFile(filepath, new Buffer.from(b64, "base64"), function(err) {
     console.log("Create file success");
+
   });
-  return filepath;
+  newFile = newFile.replace(/\\/g, "/");
+  newFile = newFile.replace(/\./, "");
+  return newFile
+
 }
 
 // router.post("/cv64", upload.any(), function(req, res, next) {
@@ -73,11 +88,15 @@ function decode_base64(base64) {
 // });
 
 router.post("/products", function(req, res, next) {
+  //  res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
+  // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  // Set custom headers for CORS
+  // res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key');
   let publish_date = new Date().toISOString().slice(0, 10);
   let sql = "INSERT INTO product SET ? ";
 
   req.body.publish_date = publish_date;
-  // req.body.image = decode_base64(req.body.image);
+  req.body.image = decode_base64(req.body.image);
   console.log(req.body);
   db.query(sql, req.body, function(error, results, fields) {
     if (error) throw error;
@@ -86,6 +105,8 @@ router.post("/products", function(req, res, next) {
 });
 
 router.get("/products/:product_id", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   let query =
     "SELECT * FROM product where `id` = " + `'${req.params.product_id}'`;
   db.query(query, function(error, results, fields) {
@@ -95,6 +116,8 @@ router.get("/products/:product_id", function(req, res, next) {
 });
 
 router.get("/search/category/:category_id", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   let query =
     "SELECT * FROM product where `category` = " + `'${req.params.category_id}'`;
   db.query(query, function(error, results, fields) {
@@ -114,6 +137,8 @@ router.get("/products/", function(req, res, next) {
 });
 
 router.put("/products/:product_id", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   let productId = req.params.product_id;
 
   let query = "SELECT * FROM product where `id` = " + `'${productId}'`;
@@ -138,6 +163,8 @@ router.put("/products/:product_id", function(req, res, next) {
 });
 
 router.delete("/products/:product_id", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   let query =
     "SELECT * FROM product where `id` = " + `'${req.params.product_id}'`;
   console.log(query);

@@ -14,7 +14,13 @@ var multer = require("multer");
 var bodyParser = require("body-parser");
 var app = express();
 var apiVersion = "/api/v1";
+var cors = require('cors');
+app.use(bodyParser.json({ limit: '100000mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
+// Express 3.0
+app.use(express.json({ limit: '10000mb' }));
+app.use(express.urlencoded({ limit: '10mb' }));
 // const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASS } = process.env;
 // var connection = mysql.createConnection({
 //   host: DB_HOST,
@@ -56,19 +62,23 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/", usersRouter);
-app.use("/t", productRouter);
+app.use(apiVersion, productRouter);
 app.use(apiVersion, orderRouter);
-
+app.use(cors({
+  'allowedHeaders': ['Content-Type'],
+  'origin': '*',
+  'preflightContinue': true
+}));
 // parse application/x-www-form-urlencoded
 // app.use(bodyParser.urlencoded({ extended: false }));
 
 // // parse application/json
 // app.use(bodyParser.json());
 
-app.use(bodyParser.json({ limit: "5000000000000000000mb" }));
-app.use(
-  bodyParser.urlencoded({ limit: "5000000000000000000mb", extended: true })
-);
+
+// app.use(
+//   bodyParser.urlencoded({ limit: "5000000000000000000mb", extended: true })
+// );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
