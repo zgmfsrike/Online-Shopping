@@ -5,7 +5,7 @@
   "name" : "macbook Retina 13.3' ME662 (2013)",
   "detail" : "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM",
   "price" : 2399,
-  "image": "../../public/image/electronics/img9.jpg",
+  "image": "../public/image/electronics/img9.jpg",
   "quantity" : 10,
   "active":2
   }, {
