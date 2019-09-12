@@ -1,13 +1,13 @@
 var express = require("express");
 var router = express.Router();
-var mysql = require("../database");
+var db = require("../database");
 var fs = require("fs");
 // var image = require("../public/uploads/")
 // var multer = require("multer");
 // var upload = multer({ dest: "uploads/" });
 const path = require("path");
 var productService = require("../services/product_services");
-var pathUpload = "/public/uploads/";
+var pathUpload = "./public/uploads/";
 var multer = require("multer");
 
 let storage = multer.diskStorage({
@@ -52,174 +52,107 @@ function base64_encode(file) {
   // convert binary data to base64 encoded string
   return new Buffer.alloc(bitmap).toString("base64");
 }
-
-// function create_64(b64) {
-//   //   let base64Image = b64.split(";base64,").pop();
-//   //   fs.writeFile(
-//   //     "/public/uploads/",
-//   //     base64Image,
-//   //     { encoding: "base64" },
-//   //     function(err) {
-//   //       console.log("File created");
-//   //     }
-//   //   );
-// }
-
+//get base64 string then write the file
 function decode_base64(base64) {
-  fs.writeFile("dsadasdasdas.jpg", new Buffer.from(base64, "base64"), function(
-    err
-  ) {
+  var filepath = pathUpload + Date.now() + ".jpg";
+  // console.log(filepath);
+
+  fs.writeFile(filepath, new Buffer.from(base64, "base64"), function(err) {
+    filepath = filepath.replace(/\\/g, "/");
     console.log("Create file success");
   });
+  return filepath;
 }
+
 router.post("/cv64", upload.any(), function(req, res, next) {
   //   var b64 = base64_encode(req.file.path);
   let b64 = req.body.b64;
   decode_base64(b64);
 });
 
-router.post("/products", upload.single("image"), function(req, res, next) {
-  let file = req.file;
-  productService.validate(req.body);
-  let seller = 2;
-  let category = req.body.category;
-  let name = req.body.name;
-  let detail = req.body.detail;
-  let price = req.body.price;
-  let quantity = req.body.quantity;
+router.post("/products", function(req, res, next) {
   let publish_date = new Date().toISOString().slice(0, 10);
-  let imagePath = file.path.replace(/\\/g, "/");
-  //   console.log("/");
-  //   console.log("\\");
-  let query =
-    "INSERT INTO product (`seller`,`category`,`name`,`detail`,`price`,`image`,`quantity`,`publish_date`)" +
-    `VALUES('${seller}','${category}','${name}','${detail}','${price}','${imagePath}','${quantity}','${publish_date}')`;
-  //   console.log(query);
-  mysql.getConnection((err, sql) => {
-    sql.query(query, function(error, results, fields) {
-      if (error) throw error;
-      res.status(201).send("Add product success!!");
-    });
+  let sql = "INSERT INTO product SET ? ";
+
+  req.body.publish_date = publish_date;
+  req.body.image = decode_base64(req.body.image);
+  console.log(req.body);
+  db.query(sql, req.body, function(error, results, fields) {
+    if (error) throw error;
+    res.status(201).send("Add product success!!");
   });
 });
 
 router.get("/products/:product_id", function(req, res, next) {
   let query =
     "SELECT * FROM product where `id` = " + `'${req.params.product_id}'`;
-  console.log(query);
-  mysql.getConnection((err, sql) => {
-    sql.query(query, function(error, results, fields) {
-      if (error) throw error;
-      res.json(results);
-    });
+  db.query(query, function(error, results, fields) {
+    if (error) throw error;
+    res.json(results);
   });
 });
 
 router.get("/search/category/:category_id", function(req, res, next) {
   let query =
     "SELECT * FROM product where `category` = " + `'${req.params.category_id}'`;
-  console.log(query);
-  mysql.getConnection((err, sql) => {
-    sql.query(query, function(error, results, fields) {
-      if (error) throw error;
-      res.json(results);
-    });
+  db.query(query, function(error, results, fields) {
+    if (error) throw error;
+    res.json(results);
   });
 });
 
 router.get("/products/", function(req, res, next) {
   let query = "SELECT * FROM product ";
+  db.query(query, function(error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+});
+
+router.put("/products/:product_id", function(req, res, next) {
+  let productId = req.params.product_id;
+
+  let query = "SELECT * FROM product where `id` = " + `'${productId}'`;
   console.log(query);
-  mysql.getConnection((err, sql) => {
-    sql.query(query, function(error, results, fields) {
+  db.query(query, function(error, results, fields) {
+    if (error) throw error;
+    let sqlUpdate = "UPDATE product SET ? WHERE id = " + productId;
+    console.log("HERE");
+    console.log(req.body);
+
+    if (typeof req.body.image != "undefined") {
+      console.log("wut");
+      let imagePath = decode_base64(req.body.image);
+      req.body.image = imagePath;
+    }
+
+    db.query(sqlUpdate, req.body, function(error, results, fields) {
       if (error) throw error;
-      res.json(results);
+      res.status(200).send("Update product success !!");
     });
   });
 });
 
-router.put("/products/:product_id", getAny.any(), function(req, res, next) {
-  productService.validate(req.body);
-  //   let seller = 2;
-  let category = req.body.category;
-  let name = req.body.name;
-  let detail = req.body.detail;
-  let price = req.body.price;
-  let quantity = req.body.quantity;
-  //   let publish_date = new Date().toISOString().slice(0, 10);
-  let active = req.body.active;
-  //   if (req.files) {
-  //     // console.log(imagePath);
-  //   } else {
-  //     console.log("NULLLLLLLLLLLLLLLLLLLLLLLLLLLl");
-  //     fs.rename(tempPath, targetPath, err => {
-  //       if (err) return handleError(err, res);
-  //     });
-  //   }
-
-  let query =
-    "SELECT * FROM product where `id` = " + `'${req.params.product_id}'`;
-  console.log(query);
-  mysql.getConnection((err, sql) => {
-    sql.query(query, function(error, results, fields) {
-      if (error) throw error;
-      //   let delPath = results[0].image.replace(/\//g, "\\");
-
-      //   fs.unlink(delPath, err => {
-      //     if (err) throw err;
-      //     console.log("File was deleted");
-      //   });
-
-      let queryUpdate =
-        "UPDATE product SET `category` =" +
-        `'${category}'` +
-        ",`name` = " +
-        `'${name}'` +
-        ", `detail` = " +
-        `'${detail}' ` +
-        ",`price` =" +
-        `'${price}'` +
-        ",`quantity` =" +
-        `'${quantity}'` +
-        ",`active` =" +
-        `'${active}'`;
-
-      // ",`image` = " +
-      // `'${imagePath}'` +
-
-      queryUpdate += " where `id` = " + `'${req.params.product_id}'`;
-
-      sql.query(queryUpdate, function(error, results, fields) {
-        if (error) throw error;
-        res.status(200).send("Update product success !!");
-      });
-    });
-  });
-});
 router.delete("/products/:product_id", function(req, res, next) {
   let query =
     "SELECT * FROM product where `id` = " + `'${req.params.product_id}'`;
   console.log(query);
-  mysql.getConnection((err, sql) => {
-    sql.query(query, function(error, results, fields) {
-      if (error) throw error;
-      let queryDel =
-        "DELETE FROM product where `id` = " + `'${req.params.product_id}'`;
-      if (results[0].image !== null) {
-        console.log(results[0].image);
+  db.query(query, function(error, results, fields) {
+    if (error) throw error;
+    let queryDel =
+      "DELETE FROM product where `id` = " + `'${req.params.product_id}'`;
+    if (results[0].image !== null) {
+      console.log(results[0].image);
 
-        let delPath = results[0].image.replace(/\//g, "\\");
-        fs.unlink(delPath, err => {
-          if (err) throw err;
-          console.log("File was deleted");
-        });
-      }
-      mysql.getConnection((err, sql) => {
-        sql.query(queryDel, function(error, results, fields) {
-          if (error) throw error;
-          res.status(200).send("Delete product success");
-        });
+      let delPath = results[0].image.replace(/\//g, "\\");
+      fs.unlink(delPath, err => {
+        if (err) throw err;
+        console.log("File was deleted");
       });
+    }
+    db.query(queryDel, function(error, results, fields) {
+      if (error) throw error;
+      res.status(200).send("Delete product success");
     });
   });
 });

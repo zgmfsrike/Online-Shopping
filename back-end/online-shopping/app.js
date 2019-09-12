@@ -8,7 +8,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var productRouter = require("./routes/product");
-var mysql = require("./database");
+var db = require("./database");
 var multer = require("multer");
 var bodyParser = require("body-parser");
 var app = express();
@@ -22,12 +22,12 @@ var apiVersion = "/api/v1";
 //   database: DB_NAME,
 //   port: DB_PORT
 // });
-mysql.getConnection((err, mclient) => {
-  mclient.query("SELECT * FROM account", function(error, results, fields) {
-    if (error) throw error;
-    console.log("DB CONNECT !!");
-  });
+// mysql.getConnection((err, mclient) => {
+db.query("SELECT * FROM account", function(error, results, fields) {
+  if (error) throw error;
+  console.log("DB CONNECT !!");
 });
+// });
 
 // app.use(multer());
 
@@ -58,10 +58,15 @@ app.use("/", usersRouter);
 app.use(apiVersion, productRouter);
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 
-// parse application/json
-app.use(bodyParser.json());
+// // parse application/json
+// app.use(bodyParser.json());
+
+app.use(bodyParser.json({ limit: "5000000000000000000mb" }));
+app.use(
+  bodyParser.urlencoded({ limit: "5000000000000000000mb", extended: true })
+);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
