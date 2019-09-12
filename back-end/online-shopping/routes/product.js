@@ -104,6 +104,8 @@ router.get("/search/category/:category_id", function(req, res, next) {
 });
 
 router.get("/products/", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   let query = "SELECT * FROM product ";
   db.query(query, function(error, results, fields) {
     if (error) throw error;
