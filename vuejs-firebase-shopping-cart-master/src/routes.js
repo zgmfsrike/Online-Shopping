@@ -10,10 +10,12 @@ import Admin from './components/Admin.vue';
 import Adduser from './components/Adduser.vue';
 import Seller from './components/Seller.vue';
 import Addseller from './components/Addseller.vue';
+import OrderManage from './components/orderManage.vue';
 
 
 export const routes = [
 	{path: '/home', component: ProductHome, name: 'mainpage'},
+	{path: '/order-manage', component: OrderManage, name: 'orderManage'},
 	{path: '/admin', component: Admin, name: 'admin'},
 	{path: '/adduser', component: Adduser, name: 'adduser'},
 	{path: '/addseller', component: Addseller, name: 'addseller'},
