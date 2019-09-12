@@ -1,5 +1,5 @@
 # Online-Shopping
-
+######################BACK########################## 
 project group 2
 npm i
 npm install dotenv
@@ -13,4 +13,4 @@ DB_PORT=3306
 DB_NAME=online-shopping
 DB_USER=root
 DB_PASS={input password here!}
-
+################################################
