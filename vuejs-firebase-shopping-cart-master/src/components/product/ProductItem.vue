@@ -1,6 +1,7 @@
 <template>
 <div class="mb-3 col-sm-6 col-md-4 item" :class="{'list-group-item': displayList}">
-  <div class="thumbnail card">
+  <div class="thumbnail card" v-for="post in posts" :key="post">
+    <p>{{post.title}}</p>
     <div class="img-event intrinsic">
       <img :src="item.thumbnail_url" alt="" class="grow thumbnail-image card-img-top intrinsic-item p-3">
     </div>
@@ -24,11 +25,18 @@
 </template>
 
 <script>
-import {
-  mapActions
-} from 'vuex';
+import { mapActions } from 'vuex';
+import axios from 'axios';
 export default {
-  props: ['item', 'displayList'],
+  getData () {
+      return {
+        photos: []
+      }
+    },
+  props: ['data','item', 'displayList'],
+  mounted () {
+    this.getData()
+  },
   methods: {
     ...mapActions(['updateCart']),
     addItem() {
@@ -38,6 +46,12 @@ export default {
         isAdd: true
       };
       this.updateCart(order);
+    },
+    getData () {
+      this.axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
+        this.posts = response.data
+        console.log(this.posts)
+      })
     }
   },
   filters: {
@@ -47,7 +61,8 @@ export default {
       } else {
         return value;
       }
-    }
+    },
+    datas: []
   }
 }
 </script>

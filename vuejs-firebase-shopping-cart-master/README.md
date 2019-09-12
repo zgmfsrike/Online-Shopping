@@ -17,6 +17,12 @@ Or use `yarn`
 yarn install
 yarn serve
 ```
+## ## ## ## ## ## ## ##
+yarn add axios vue-axios
+yarn add vuex
+yarn add @mdi/font
+yarn add vuetify
+
 
 You can use data in `data/` folder to import to `products` node in your firebase app.
 

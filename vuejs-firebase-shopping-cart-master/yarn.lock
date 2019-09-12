@@ -866,6 +866,11 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
+"@mdi/font@^4.4.95":
+  version "4.4.95"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-4.4.95.tgz#4a00f46a500120714ded1524f376f7882346d3fd"
+  integrity sha512-9BSvtpDF83dQ06VmwCeXTebzZZisIf4u6d62uC53oD6bzBUEMqiQrbW+oxyFrBYn3VxttRt/MKuL/wKUV9HWmA==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -8844,6 +8849,11 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
   integrity sha512-iq+S7vZJE60yejDYM0ek6zg308+UZsdtPExWP9VZoCFCz1zkJoXFnAX7aZfd/ZwrkidzdUZL0C/ryW+JwAiIGw==
 
+vue-axios@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-2.1.4.tgz#a9d298f7e876f9a87feb336b37adcbce34ff9f9f"
+  integrity sha512-DS8Q+WFT3i7nS0aZ/NMmTPf2yhbtlXhj4QEZmY69au/BshsGzGjC6dXaniZaPQlErP3J3Sv1HtQ4RVrXaUTkxA==
+
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.3.tgz#c268c96c6d94cfe3d938a5f7593959b0ca3360d1"
@@ -8919,6 +8929,11 @@ vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
+
+vuetify@^2.0.17:
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.17.tgz#824dc9e640fc249a4fe37a1757206dbc9fed3492"
+  integrity sha512-pBtwwF2SnZDfr2MPj5kA5VFUL9tjFVK4ca1+dUfw1LZS8AtJfOl70agpSMqcItehzESddIPsDu5sp/JOFCOygA==
 
 vuex@^3.1.1:
   version "3.1.1"

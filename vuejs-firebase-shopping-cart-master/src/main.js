@@ -1,19 +1,23 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import { routes } from './routes';
 import store from './stores/store';
 import { firebaseListener } from './config/firebaseConfig';
 import './assets/styles/app.scss'
-
+import Vuetify from 'vuetify'
 import App from './App.vue';
+import 'vuetify/dist/vuetify.min.css'
+import '@mdi/font/css/materialdesignicons.css'
 
 Vue.use(VueRouter);
-
+Vue.use(VueAxios, axios)
+Vue.use(Vuetify)
 
 firebaseListener(authStatusChange);
 
-
+window.store = store
 const router = new VueRouter({
 	mode: 'history',
 	routes
@@ -31,7 +35,9 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
-  store,
+	store,
+	vuetify: new Vuetify(),
+	Vuetify,
   render: h => h(App)
 })
 
