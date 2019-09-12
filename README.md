@@ -3,6 +3,7 @@
 project group 2
 npm i
 npm install dotenv
+npm i node-input-validator
 //create .env to store db config
 
 npm i multer
