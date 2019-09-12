@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/", usersRouter);
-app.use(apiVersion, productRouter);
+app.use("/t", productRouter);
 app.use(apiVersion, orderRouter);
 
 // parse application/x-www-form-urlencoded

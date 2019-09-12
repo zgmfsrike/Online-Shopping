@@ -76,7 +76,7 @@ router.post("/products", function(req, res, next) {
   let sql = "INSERT INTO product SET ? ";
 
   req.body.publish_date = publish_date;
-  req.body.image = decode_base64(req.body.image);
+  // req.body.image = decode_base64(req.body.image);
   console.log(req.body);
   db.query(sql, req.body, function(error, results, fields) {
     if (error) throw error;
