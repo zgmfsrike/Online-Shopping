@@ -4,6 +4,7 @@ project group 2
 npm i
 npm install dotenv
 npm i node-input-validator
+npm install body-parser
 //create .env to store db config
 
 npm i multer
