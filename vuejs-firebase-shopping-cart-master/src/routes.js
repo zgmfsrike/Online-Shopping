@@ -11,7 +11,7 @@ import Adduser from './components/Adduser.vue';
 import Seller from './components/Seller.vue';
 import Addseller from './components/Addseller.vue';
 import OrderManage from './components/orderManage.vue';
-
+import Payment from './components/Payment.vue';
 
 export const routes = [
 	{path: '/home', component: ProductHome, name: 'mainpage'},
@@ -27,6 +27,7 @@ export const routes = [
 	{path: '/register', component: Register, name: 'register', onlyGuest: true},
 	{path: '/product/manage', component: Productmanagement, name: 'productmanagement'},
 	{path: '*', redirect: '/' },
-	{path: '/test', component: Test, name: 'test'}
+	{path: '/test', component: Test, name: 'test'},
+	{path: '/payment', component: Payment, name: 'Payment'}
 	
 ];

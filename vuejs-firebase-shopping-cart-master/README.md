@@ -22,6 +22,7 @@ yarn add axios vue-axios
 yarn add vuex
 yarn add @mdi/font
 yarn add vuetify
+yarn add vue bootstrap-vue bootstrap
 
 
 You can use data in `data/` folder to import to `products` node in your firebase app.
