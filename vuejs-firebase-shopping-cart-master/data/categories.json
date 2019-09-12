@@ -1,0 +1,26 @@
+[
+  {
+    "categories": "Electronics",
+    "id": 1
+  },
+  {
+    "categories": "Home & Auto",
+    "id": 2
+  },
+  {
+    "categories": "Fashions",
+    "id": 3
+  },
+  {
+    "categories": "Food & Beverage",
+    "id": 4
+  },
+  {
+    "categories": "Health & Beauty",
+    "id": 5
+  },
+  {
+    "categories": "Sports",
+    "id": 6
+  }
+]

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <router-link to="/" class="navbar-brand mr-auto">Online Store</router-link>
+    <router-link to="/home" class="navbar-brand mr-auto">2Shop</router-link>
     <button
         class="navbar-toggler"
         type="button"
@@ -16,6 +16,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarTop" :class="{show: isNavOpen}">
+      <div data-v-b9393740="" class="search-bar navbar-nav mr-auto" style="width: 50%; margin-left: 5%;">
+        <input data-v-b9393740="" id="__BVID__7" type="text" placeholder="Search Product" value="" class="form-control">
+        <span data-v-b9393740="" class="search-icon"><i data-v-b9393740="" class="fas fa-search"></i></span>
+      </div>
       <ul class="navbar-nav mr-auto">
 
       </ul>
