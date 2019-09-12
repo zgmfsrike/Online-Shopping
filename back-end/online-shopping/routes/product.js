@@ -8,28 +8,29 @@ var fs = require("fs");
 const path = require("path");
 var productService = require("../services/product_services");
 var pathUpload = "./public/uploads/";
-var multer = require("multer");
+// var multer = require("multer");
+const { Validator } = require("node-input-validator");
 
-let storage = multer.diskStorage({
-  destination: "." + pathUpload,
-  filename: function(req, file, cb) {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  }
-});
+// let storage = multer.diskStorage({
+//   destination: "." + pathUpload,
+//   filename: function(req, file, cb) {
+//     cb(
+//       null,
+//       file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+//     );
+//   }
+// });
 
-const upload = multer({
-  storage: storage,
+// const upload = multer({
+//   storage: storage,
 
-  //   limits: { fileSize: 1000000 }
-  fileFilter: function(req, file, cb) {
-    productService.checkfile(file, cb);
-  }
-});
+//   //   limits: { fileSize: 1000000 }
+//   fileFilter: function(req, file, cb) {
+//     productService.checkfile(file, cb);
+//   }
+// });
 
-const getAny = multer();
+// const getAny = multer();
 // var upload = multer({ dest: "uploads/" });
 // var upload = multer({ storage: storage });
 // Set The Storage Engine
@@ -64,11 +65,11 @@ function decode_base64(base64) {
   return filepath;
 }
 
-router.post("/cv64", upload.any(), function(req, res, next) {
-  //   var b64 = base64_encode(req.file.path);
-  let b64 = req.body.b64;
-  decode_base64(b64);
-});
+// router.post("/cv64", upload.any(), function(req, res, next) {
+//   //   var b64 = base64_encode(req.file.path);
+//   let b64 = req.body.b64;
+//   decode_base64(b64);
+// });
 
 router.post("/products", function(req, res, next) {
   let publish_date = new Date().toISOString().slice(0, 10);
