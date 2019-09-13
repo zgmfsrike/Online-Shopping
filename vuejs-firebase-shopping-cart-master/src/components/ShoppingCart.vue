@@ -29,7 +29,7 @@
         <td class="d-none d-sm-table-cell text-center"><strong>Total ${{ cartValue }}</strong></td>
         <td class="px-0">
           <button class="btn btn-success" @click="checkout">
-							<span class="text-nowrap">Checkout <i class="fa fa-angle-right d-inline"></i></span>
+							<span class="text-nowrap">Payment <i class="fa fa-angle-right d-inline"></i></span>
 					</button>
         </td>
       </tr>
@@ -107,40 +107,40 @@ export default {
     },
     checkout() {
       if (this.isLoggedIn) {
-        if (!this.cartItemList || this.cartItemList.length == 0) {
-          this.addMessage({
-            messageClass: 'warning',
-            message: 'Your cart is empty!'
-          });
-          return;
-        }
-        let {
-          isValid,
-          message
-        } = this.checkValidCart(this.cartItemList, this.products);
+        // if (!this.cartItemList || this.cartItemList.length == 0) {
+        //   this.addMessage({
+        //     messageClass: 'warning',
+        //     message: 'Your cart is empty!'
+        //   });
+        //   return;
+        // }
+        // let {
+        //   isValid,
+        //   message
+        this.checkValidCart(this.cartItemList, this.products);
 
-        if (isValid) {
-          this.saveToTransaction({
-            cartItemList: this.cartItemList,
-            uid: this.currentUser.uid
-          }).then(() => {
-            this.addMessage({
-              messageClass: 'success',
-              message: 'Your order has been successfully processed!'
-            });
-            this.saveShoppingCart({
-              cartItemList: [],
-              uid: this.currentUser.uid
-            });
-            this.clearCart();
-            this.$router.push('/');
-          });
-        } else {
-          this.addMessage({
-            messageClass: 'danger',
-            message: message
-          });
-        }
+        // if (isValid) {
+        //   this.saveToTransaction({
+        //     cartItemList: this.cartItemList,
+        //     uid: this.currentUser.uid
+        //   }).then(() => {
+        //     this.addMessage({
+        //       messageClass: 'success',
+        //       message: 'Your order has been successfully processed!'
+        //     });
+        //     this.saveShoppingCart({
+        //       cartItemList: [],
+        //       uid: this.currentUser.uid
+        //     });
+        //     this.clearCart();
+            this.$router.push('/payment');
+        //   });
+        // } else {
+        //   this.addMessage({
+        //     messageClass: 'danger',
+        //     message: message
+        //   });
+        // }
       } else {
         this.addMessage({
           messageClass: 'warning',
