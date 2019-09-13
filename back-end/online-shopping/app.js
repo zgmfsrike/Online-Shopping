@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 // var mysql = require("mysql");
 // require(`dotenv`).config();
+var registerRouter = require("./routes/register");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var productRouter = require("./routes/product");
@@ -15,7 +16,7 @@ var bodyParser = require("body-parser");
 var app = express();
 var apiVersion = "/api/v1";
 var cors = require('cors');
-app.use(bodyParser.json({ limit: '100000mb' }));
+app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // Express 3.0
@@ -64,6 +65,7 @@ app.use("/", indexRouter);
 app.use("/", usersRouter);
 app.use(apiVersion, productRouter);
 app.use(apiVersion, orderRouter);
+app.use("/",registerRouter);
 app.use(cors({
   'allowedHeaders': ['Content-Type'],
   'origin': '*',
