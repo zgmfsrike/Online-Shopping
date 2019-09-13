@@ -7,7 +7,7 @@ router.get("/register", function(req, res, next) {
   db.query(sql, (err, results, fields) => {
     console.log(results);
     res.status(200).json(results);
-    req.body.id = id;
+    // req.body.id = id;
     req.body.username = username;
     req.body.password = password;
     req.body.role = role;
