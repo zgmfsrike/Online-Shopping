@@ -88,10 +88,6 @@ function decode_base64(base64) {
 // });
 
 router.post("/products", function(req, res, next) {
-  //  res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
-  // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  // Set custom headers for CORS
-  // res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key');
   let publish_date = new Date().toISOString().slice(0, 10);
   let sql = "INSERT INTO product SET ? ";
 
@@ -152,6 +148,7 @@ router.put("/products/:product_id", function(req, res, next) {
     if (typeof req.body.image != "undefined") {
       console.log("wut");
       let imagePath = decode_base64(req.body.image);
+    
       req.body.image = imagePath;
     }
 

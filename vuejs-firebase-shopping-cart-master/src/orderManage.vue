@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     submit () {
-      this.axios.post('http://localhost:3000/api/v1/products', {
+      this.axios.post('http://localhost:3000/api/v1/products',this.$data, {
         
         })
         .then(function (response) {

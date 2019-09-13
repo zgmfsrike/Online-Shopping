@@ -13,7 +13,7 @@ import '@mdi/font/css/materialdesignicons.css'
 
 Vue.use(Vuetify)
 Vue.use(VueAxios, axios)
-
+// Vue.http.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:3000'
 Vue.config.productionTip = false
 window.store = store
 
