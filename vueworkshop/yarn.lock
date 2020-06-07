@@ -7435,6 +7435,11 @@ vue@^2.5.2:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
 
+vuetify-upload-button@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/vuetify-upload-button/-/vuetify-upload-button-2.0.2.tgz#9b4e75069cd6225e5871b79d845e6b733bb9c2fa"
+  integrity sha512-i4rd+XBFjhesm1GyuwgeSP5moKfBMFOmhkoPRru+DxkVSyD1fAn1W+zko5XyLRAAfIunR3WsFRYWTvZoCwVI9g==
+
 vuetify@^2.0.15:
   version "2.0.15"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.15.tgz#aa04f5e9123a895d6f1f3162d76d8755555bec29"
@@ -7583,9 +7588,9 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
-  integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
+  integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
 whet.extend@~0.9.9:
   version "0.9.9"
